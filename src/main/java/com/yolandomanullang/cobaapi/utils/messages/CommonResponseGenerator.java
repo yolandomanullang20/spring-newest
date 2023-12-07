@@ -15,4 +15,20 @@ public class CommonResponseGenerator<T> {
         return commonResponse;
     }
 
+    public CommonResponse<T> commonFailedResponse(String detail) {
+        CommonResponse<T> commonResponse = new CommonResponse<>();
+        commonResponse.setStatus(200);
+        commonResponse.setMessage("FAILED");
+        commonResponse.setDetail(detail);
+
+        return commonResponse;
+    }
+    public CommonResponse<T> commonFailedResponse(String detail, Integer httpStatusCode) {
+        CommonResponse<T> commonResponse = new CommonResponse<>();
+        commonResponse.setStatus(httpStatusCode);
+        commonResponse.setMessage("FAILED");
+        commonResponse.setDetail(detail);
+
+        return commonResponse;
+    }
 }

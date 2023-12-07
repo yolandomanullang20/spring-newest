@@ -23,7 +23,13 @@ public class HelloWorld {
     @GetMapping
     public CommonResponse<String> helloWorld() {
         logger.info("Hello World!");
-        return commonResponseGenerator.commonSuccessResponse(null, "Hello World!");
+        try {
+            return commonResponseGenerator.commonSuccessResponse(null, "Hello World!");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+            return commonResponseGenerator.commonFailedResponse(e.getMessage());
+        }
     }
 
 }
